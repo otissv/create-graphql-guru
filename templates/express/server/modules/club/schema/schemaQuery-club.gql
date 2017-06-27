@@ -1,0 +1,10 @@
+# Finds all Clubs
+clubFindAll(id: String): [Club]
+
+# Finds Clubs by ID
+clubFindById(id: String): Club
+
+clubResolve(id: String): Club
+
+
+clubFindManyById(id: [String]): [Club]

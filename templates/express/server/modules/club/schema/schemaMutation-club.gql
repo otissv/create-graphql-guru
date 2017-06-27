@@ -1,0 +1,6 @@
+# Creates a new Club
+clubCreate (
+  id         : String,
+  description: String,
+  name       : String
+): Club

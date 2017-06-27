@@ -1,0 +1,9 @@
+/server/queries/*
+/logs/*
+/node_modules/*
+/public/*
+/.git/*
+/.gitignore
+/package.json
+/README.md
+/query-history.json

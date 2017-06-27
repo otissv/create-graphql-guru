@@ -1,0 +1,17 @@
+# userCreate
+userCreate(
+  username: String,
+  manager: String
+  role: String
+): User
+
+userRemove(
+  _id: String
+): User
+
+userUpdate(
+  _id: String,
+  username: String,
+  manager: String
+  role: String
+): User

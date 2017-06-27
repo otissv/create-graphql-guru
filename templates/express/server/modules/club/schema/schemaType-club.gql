@@ -1,0 +1,13 @@
+input InputClub {
+  id: String
+}
+
+# Club type definition
+type Club {
+  id         : String,
+  description: String,
+  name       : String,
+  count      : Int,
+  manager    : User
+}
+

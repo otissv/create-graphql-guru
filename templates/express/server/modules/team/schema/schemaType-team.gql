@@ -1,0 +1,8 @@
+type Team {
+  id:       String
+  user:     User
+  friends:  [User]
+  likes:    Int
+  club:     [Club]
+  managers: User
+}
