@@ -1,4 +1,4 @@
-import program, { args, resolver, schema } from './utils';
+import program, { args, resolver, schema } from './schema-helpers';
 import Bluebird from 'bluebird';
 import fs from 'fs';
 import shell from 'shelljs';

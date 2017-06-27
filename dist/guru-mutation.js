@@ -1,8 +1,8 @@
 'use strict';
 
-var _utils = require('./utils');
+var _schemaHelpers = require('./schema-helpers');
 
-var _utils2 = _interopRequireDefault(_utils);
+var _schemaHelpers2 = _interopRequireDefault(_schemaHelpers);
 
 var _bluebird = require('bluebird');
 
@@ -24,12 +24,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _bluebird2.default.promisifyAll(_fs2.default);
 var moduleRoot = process.cwd() + '/server/modules';
-var dest = _utils2.default.path ? moduleRoot + '/' + _utils2.default.path : moduleRoot;
+var dest = _schemaHelpers2.default.path ? moduleRoot + '/' + _schemaHelpers2.default.path : moduleRoot;
 
 var mkdir = _shelljs2.default.mkdir;
 
-var _args = (0, _utils.args)({
-  program: _utils2.default
+var _args = (0, _schemaHelpers.args)({
+  program: _schemaHelpers2.default
 }),
     database = _args.database,
     fileName = _args.fileName,
@@ -42,8 +42,8 @@ var resolverStr = void 0;
 mkdir('-p', path);
 
 function createResolver() {
-  if (_utils2.default.resolver) {
-    resolverStr = (0, _utils.resolver)({
+  if (_schemaHelpers2.default.resolver) {
+    resolverStr = (0, _schemaHelpers.resolver)({
       database: database,
       methods: methods,
       moduleName: moduleName
@@ -61,12 +61,12 @@ function createResolver() {
 }
 
 function createSchema() {
-  if (_utils2.default.schema) {
+  if (_schemaHelpers2.default.schema) {
     var moduleFile = 'schemaMutation-' + moduleName + (fileName ? '-' + fileName : '') + '.graphql';
     var file = path + '/' + moduleFile;
     var options = { flag: 'wx' };
 
-    var schemaStr = methods ? (0, _utils.schema)({ methods: methods, moduleName: moduleName }) : '';
+    var schemaStr = methods ? (0, _schemaHelpers.schema)({ methods: methods, moduleName: moduleName }) : '';
 
     _fs2.default.writeFileAsync(file, schemaStr, options).then(function () {
       console.log(_chalk2.default.yellow('Created ' + moduleFile));
