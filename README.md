@@ -1,4 +1,4 @@
-# Create Guru Server
+# Create GraphQL Guru
  Easily Scaffold and generate graphql servers  
 
 **Still under heavy development with frequent breaking changes**
