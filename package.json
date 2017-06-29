@@ -1,8 +1,8 @@
 {
-  "name": "create-guru-server",
+  "name": "create-graphql-guru",
   "version": "0.0.1",
   "description": "Command line scaffolding and generator for Graphql Guru",
-  "main": "dist/cli.js",
+  "main": "dist/guru.js",
   "scripts": {
     "build": "node ./node_modules/@graphql-guru/babel-tasks/tasks.js",
     "watch": "npm run build -- -w",
