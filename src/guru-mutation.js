@@ -31,7 +31,17 @@ function createResolver () {
     fs
       .writeFileAsync(file, resolverStr, { flag: 'wx' })
       .then(() => {
-        console.log(chalk.yellow(`Created ${moduleFile}`));
+        process.stdout.write(chalk.yellow(`Created ${moduleFile}\n`));
+        process.stdout.write(`
+        Run npm install graphql-guru-${database} to instal  ${database} client.
+
+        In server/core/database/index-database.js
+
+        import * as ${database} from 'graphql-guru-${database}';
+
+        export const databases = {
+          ${database}
+        };`);
       })
       .catch(error => {
         throw new Error(error);
@@ -50,7 +60,7 @@ function createSchema () {
     fs
       .writeFileAsync(file, schemaStr, options)
       .then(() => {
-        console.log(chalk.yellow(`Created ${moduleFile}`));
+        process.stdout.write(chalk.yellow(`Created ${moduleFile}\n`));
       })
       .catch(error => {
         throw new Error(error);

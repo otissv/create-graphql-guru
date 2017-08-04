@@ -38,17 +38,17 @@
   },
   "devDependencies": {
     "@graphql-guru/babel-tasks": "^1.0.0",
-    "ava": "^0.18.2",
+    "ava": "^0.21.0",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
-    "eslint": "^3.19.0",
+    "eslint": "^4.3.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "rimraf": "^2.6.1",
@@ -56,6 +56,6 @@
     "tap-difflet": "^0.7.0",
     "tap-min": "^1.2.1",
     "watch": "^1.0.2",
-    "yarn": "^0.22.0"
+    "yarn": "^0.27.5"
   }
 }

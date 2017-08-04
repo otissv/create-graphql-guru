@@ -30,8 +30,8 @@ _bluebird2.default.promisifyAll(_fs2.default);
 var mkdir = _shelljs2.default.mkdir;
 
 
-_commander2.default.option('-p, --path [path]', 'Path to where module will be created, relative to root.').option('-m, --module [scalar]', 'Module name').option('-e, --enum [enum]', 'Enum definition').option('-f, --interface [Interface]', 'interface definition').option('-i, --input [input]', 'input definition').option('-o, --object [object]', 'Object definition').option('-s, --scalar [scalar]', 'Scalar definition').option('-u, --union [union]', 'Union definition').parse(process.argv);
-
+_commander2.default.option('-m, --module <name>', 'Module name').option('-p, --path ', 'Path to where module will be created, relative to root.').option('-e, --enum ["name value"]', 'creates Enum definition').option('-f, --interface ["name key:value"]', 'interface definition').option('-i, --input ["name key:value"]', 'input definition').option('-o, --object ["name key:value"]', 'Object definition').option('-s, --scalar ["name key:value"]', 'Scalar definition').option('-u, --union ["name key:value"]', 'creates Union definition').parse(process.argv);
+console.log(_commander2.default);
 if (!_commander2.default.module || typeof _commander2.default.module !== 'string') {
   throw new Error('No module name provide.');
 }
@@ -71,7 +71,7 @@ mkdir('-p', path);
 var file = path + '/' + moduleFile;
 
 _fs2.default.writeFileAsync(file, data, { flag: 'a' }).then(function () {
-  console.log(_chalk2.default.yellow('Created ' + moduleFile));
+  process.stdout.write(_chalk2.default.yellow('Created ' + moduleFile));
 }).catch(function (error) {
   throw new Error(error);
 });

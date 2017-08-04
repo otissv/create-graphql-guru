@@ -3,18 +3,18 @@ import { capitalize } from './utils';
 const moduleRoot = `${process.cwd()}/server/modules`;
 
 export default program
+  .option('-m, --module <name>', 'Modules name')
+  .option('-d, --database <name>', 'Extends module with database client')
+  .option('-r, --resolver [true]', 'Create mutation resolve')
+  .option('-s, --schema [true]', 'Name of query module')
   .option(
-    '-p, --path [path]',
+    '-p, --path',
     'Path to where module will be created, relative to root.'
   )
-  .option('-m, --module [module]', 'Modules name.')
-  .option('-d, --database [database]', 'Extends module with database client')
-  .option('-r, --resolver [resolver...]', 'Create mutation resolve')
-  .option('-s, --schema [schema....]', 'Name of query module')
   .parse(process.argv);
 
 export function args ({ program }) {
-  if (program.module || typeof program.module !== 'string') {
+  if (typeof program.module !== 'string') {
     throw new Error('No module name provide.');
   }
   const moduleName = program.module.split('.');
@@ -31,17 +31,16 @@ export function args ({ program }) {
 export function resolver ({ database, methods, moduleName }) {
   const moduleMethods = methods == null
     ? []
-    : methods.map(
-        method =>
-          ` 
+    : methods.map(method => ` 
   ${method} ({ args, context, databases, locals, models, req }) {
 
   }`
-      );
+    );
 
   const importDatabase = database
-    ? `import ${database} from 'guru-${database};'
+    ? `import ${database} from 'graphql-guru-${database};'
     
+  
 `
     : '';
 

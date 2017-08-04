@@ -55,7 +55,8 @@ function createResolver() {
     var options = { flag: 'wx' };
 
     _fs2.default.writeFileAsync(file, resolverStr, options).then(function () {
-      console.log(_chalk2.default.yellow('Created ' + moduleFile));
+      process.stdout.write(_chalk2.default.yellow('Created ' + moduleFile + '\n'));
+      process.stdout.write('\n        Run npm install graphql-guru-' + database + ' to instal  ' + database + ' client.\n\n        In server/core/database/index-database.js\n\n        import * as ' + database + ' from \'graphql-guru-' + database + '\';\n\n        export const databases = {\n          ' + database + '\n        };');
     }).catch(function (error) {
       throw new Error(error);
     });
@@ -71,7 +72,7 @@ function createSchema() {
     var schemaStr = methods ? (0, _schemaHelpers.schema)({ methods: methods, moduleName: moduleName }) : '';
 
     _fs2.default.writeFileAsync(file, schemaStr, options).then(function () {
-      console.log(_chalk2.default.yellow('Created ' + moduleFile));
+      process.stdout.write(_chalk2.default.yellow('Created ' + moduleFile + '\n'));
     }).catch(function (error) {
       throw new Error(error);
     });

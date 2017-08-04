@@ -9,19 +9,19 @@ Bluebird.promisifyAll(fs);
 const { mkdir } = shell;
 
 program
+  .option('-m, --module <name>', 'Module name')
   .option(
-    '-p, --path [path]',
+    '-p, --path ',
     'Path to where module will be created, relative to root.'
   )
-  .option('-m, --module [scalar]', 'Module name')
-  .option('-e, --enum [enum]', 'Enum definition')
-  .option('-f, --interface [Interface]', 'interface definition')
-  .option('-i, --input [input]', 'input definition')
-  .option('-o, --object [object]', 'Object definition')
-  .option('-s, --scalar [scalar]', 'Scalar definition')
-  .option('-u, --union [union]', 'Union definition')
+  .option('-e, --enum ["name value"]', 'creates Enum definition')
+  .option('-f, --interface ["name key:value"]', 'interface definition')
+  .option('-i, --input ["name key:value"]', 'input definition')
+  .option('-o, --object ["name key:value"]', 'Object definition')
+  .option('-s, --scalar ["name key:value"]', 'Scalar definition')
+  .option('-u, --union ["name key:value"]', 'creates Union definition')
   .parse(process.argv);
-
+console.log(program)
 if (!program.module || typeof program.module !== 'string') {
   throw new Error('No module name provide.');
 }
@@ -42,6 +42,7 @@ const types = {
   union: program.union
 };
 
+
 const data = Object.keys(types).reduce((previous, key) => {
   if (types[key] == null) return previous;
   const [typeName, ...props] = types[key].split(' ');
@@ -61,7 +62,7 @@ const file = `${path}/${moduleFile}`;
 fs
   .writeFileAsync(file, data, { flag: 'a' })
   .then(() => {
-    console.log(chalk.yellow(`Created ${moduleFile}`));
+    process.stdout.write(chalk.yellow(`Created ${moduleFile}`));
   })
   .catch(error => {
     throw new Error(error);

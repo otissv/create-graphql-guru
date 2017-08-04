@@ -2,6 +2,9 @@ import program from 'commander';
 import shell from 'shelljs';
 import path from 'path';
 import fs from 'fs';
+import Bluebird from 'bluebird';
+
+Bluebird.promisifyAll(fs);
 
 const dest = process.cwd();
 const template = path.join(__dirname, '../templates/express/*');
@@ -29,26 +32,37 @@ function copyTemplate () {
     : process.stdout.write(`Express files copied to app folder\n`);
 }
 
-function updatePackage () {
-  fs.writeFile(
+function install () {
+  fs.writeFileAsync(
     `${appFolder}/package.json`,
     JSON.stringify(pkg, null, 2),
     error => {
       error ? process.exit() : process.stdout.write(`Updated package name \n`);
     }
-  );
+  )
+    .then(() => yarn())
+    .then(() => {
+      process.stdout.write('\n===========================================================\n');
+      exec(`echo Guru Files created:;ls`);
+      process.stdout.write('\nnpm run dev starts the sever in development mode\n');
+      process.stdout.write('\nSchema and resolves can be found in server/modules directory\n');
+      process.stdout.write('\n============================================================');
+    })
+    .catch(error => {
+      throw new Error(error);
+    });
 }
 
-function install () {
+function yarn () {
   cd(appFolder);
   exec('yarn install');
   error() ? process.exit() : process.stdout.write(`Dependencies installed\n`);
 }
 
+
 function run () {
   createFolder(appName);
   copyTemplate();
-  updatePackage();
   install();
 }
 

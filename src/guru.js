@@ -3,14 +3,14 @@
 import program from 'commander';
 
 program
-  .command('express <req> [optional]', 'Creates a guru express server')
-  .command('type <req> [optional]', 'Creates schema type module')
+  .command('express', 'Creates a guru express server')
+  .command('type -m', 'Creates schema type module')
   .command(
-    'mutation <req> [optional]',
+    'mutation -m',
     'Creates resolver and schema mutation modules'
   )
   .command(
-    'query <req> [optional]',
+    'query -m',
     'Creates resolver and schema query modules'
   )
   .parse(process.argv);

@@ -17,11 +17,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var moduleRoot = process.cwd() + '/server/modules';
 
-exports.default = _commander2.default.option('-p, --path [path]', 'Path to where module will be created, relative to root.').option('-m, --module [module]', 'Modules name.').option('-d, --database [database]', 'Extends module with database client').option('-r, --resolver [resolver...]', 'Create mutation resolve').option('-s, --schema [schema....]', 'Name of query module').parse(process.argv);
+exports.default = _commander2.default.option('-m, --module <name>', 'Modules name').option('-d, --database <name>', 'Extends module with database client').option('-r, --resolver [true]', 'Create mutation resolve').option('-s, --schema [true]', 'Name of query module').option('-p, --path', 'Path to where module will be created, relative to root.').parse(process.argv);
 function args(_ref) {
   var program = _ref.program;
 
-  if (program.module || typeof program.module !== 'string') {
+  if (typeof program.module !== 'string') {
     throw new Error('No module name provide.');
   }
   var moduleName = program.module.split('.');
@@ -44,7 +44,7 @@ function resolver(_ref2) {
     return ' \n  ' + method + ' ({ args, context, databases, locals, models, req }) {\n\n  }';
   });
 
-  var importDatabase = database ? 'import ' + database + ' from \'guru-' + database + ';\'\n    \n' : '';
+  var importDatabase = database ? 'import ' + database + ' from \'graphql-guru-' + database + ';\'\n    \n  \n' : '';
 
   return importDatabase + 'export default class ' + (0, _utils.capitalize)(moduleName) + ' ' + (database ? 'extends ' + database + ' ' : '') + '{\n' + moduleMethods.join('\n') + '\n};\n';
 }
