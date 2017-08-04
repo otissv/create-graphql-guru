@@ -1,0 +1,3 @@
+  helloGreetEveryone(id: String): [Hello]
+  helloGreetOne(id: String): Hello
+  helloResolve(id: String): Hello

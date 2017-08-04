@@ -1,4 +1,0 @@
-teamFindAll(id: String): [Team]
-teamFindById(id: String): Team
-teamFindManyById(id: [String]): [Team]
-teamResolve(id: String): Team

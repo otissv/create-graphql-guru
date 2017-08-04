@@ -2,13 +2,18 @@
   "parser": "babel-eslint",
   
   "env": {
-    "browser": true,
     "node": true,
-    "mocha": true
+    "browser": true,
+    "es6": true
   },
 
-  "ecmaFeatures": {
-    "modules": true
+  
+  "parserOptions": { 
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "sourceType": "modules",
+      "impliedStrict": true
+    }
   },
 
   "globals": {

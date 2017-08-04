@@ -1,0 +1,5 @@
+type Hello {
+  id:        String
+  firstName: String
+  lastName:  String
+}
