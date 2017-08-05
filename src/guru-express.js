@@ -7,7 +7,7 @@ import Bluebird from 'bluebird';
 Bluebird.promisifyAll(fs);
 
 const dest = process.cwd();
-const template = path.join(__dirname, '../templates/express/*');
+const template = path.join(__dirname, '../templates/express');
 const pkgPath = path.join(__dirname, '../templates/express/package.json');
 const pkg = require(pkgPath);
 const { cd, cp, exec, error, mkdir } = shell;
@@ -26,7 +26,8 @@ function createFolder (folder) {
 }
 
 function copyTemplate () {
-  cp('-R', template, appFolder);
+  cp('-R', `${template}/*`, appFolder);
+  cp('-R', `${template}/.*`, appFolder);
   error()
     ? process.exit()
     : process.stdout.write(`Express files copied to app folder\n`);
@@ -61,9 +62,13 @@ function yarn () {
 
 
 function run () {
-  createFolder(appName);
-  copyTemplate();
-  install();
+  if (appName) {
+    createFolder(appName);
+    copyTemplate();
+    install();
+  } else {
+    program.help();
+  }
 }
 
 run();

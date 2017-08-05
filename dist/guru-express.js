@@ -25,7 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _bluebird2.default.promisifyAll(_fs2.default);
 
 var dest = process.cwd();
-var template = _path2.default.join(__dirname, '../templates/express/*');
+var template = _path2.default.join(__dirname, '../templates/express');
 var pkgPath = _path2.default.join(__dirname, '../templates/express/package.json');
 var pkg = require(pkgPath);
 var cd = _shelljs2.default.cd,
@@ -47,7 +47,8 @@ function createFolder(folder) {
 }
 
 function copyTemplate() {
-  cp('-R', template, appFolder);
+  cp('-R', template + '/*', appFolder);
+  cp('-R', template + '/.*', appFolder);
   error() ? process.exit() : process.stdout.write('Express files copied to app folder\n');
 }
 
@@ -74,9 +75,13 @@ function yarn() {
 }
 
 function run() {
-  createFolder(appName);
-  copyTemplate();
-  install();
+  if (appName) {
+    createFolder(appName);
+    copyTemplate();
+    install();
+  } else {
+    _commander2.default.help();
+  }
 }
 
 run();
