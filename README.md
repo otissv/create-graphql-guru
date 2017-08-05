@@ -4,7 +4,7 @@
 ## Quick overview  
 ```npm install -g create-graphql-guru-sever
 
-create-graphql-guru my-server  
+guru express my-server  
 cd my-server  
 npm run dev
 ```
@@ -20,7 +20,7 @@ Just create a project, and you’re good to go.
 ### Installation
 Install once globally:
 
-```npm install -g create-graphql-guru-sever```
+```npm install -g create-graphql-guru```
 
 You will need **Node >= 6 on your machine**. You can you [n](https://github.com/tj/n#installation) or [nvm](https://github.com/creationix/nvm#installation)
 
@@ -28,7 +28,7 @@ You will need **Node >= 6 on your machine**. You can you [n](https://github.com/
 To create a new server, run:  
 
 ```
-create-graphql-guru-server my-server
+guru express my-server
 
 cd my-server
 npm run dev  
