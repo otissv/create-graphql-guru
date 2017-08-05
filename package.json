@@ -1,6 +1,6 @@
 {
   "name": "create-graphql-guru",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Command line scaffolding and generator for Graphql Guru",
   "main": "dist/guru.js",
   "bin": {
