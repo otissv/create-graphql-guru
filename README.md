@@ -132,7 +132,7 @@ Options:
 
 Example
 ```
-guru Mutation -m query -d 'mongodb' -rs 'User' findAll findById
+guru mutation -m query -d 'mongodb' -rs 'User' create update remove
 ```
 
 Mutation options
