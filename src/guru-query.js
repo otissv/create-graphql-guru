@@ -34,16 +34,18 @@ function createResolver () {
       .writeFileAsync(file, resolverStr, options)
       .then(() => {
         process.stdout.write(chalk.yellow(`Created ${moduleFile}\n`));
-        process.stdout.write(`
-        Run npm install graphql-guru-${database} to instal  ${database} client.
+        if (database) {
+          process.stdout.write(`
+          Run npm install graphql-guru-${database} to instal  ${database} client.
 
-        In server/core/database/index-database.js
+          In server/core/database/index-database.js
 
-        import * as ${database} from 'graphql-guru-${database}';
+          import * as ${database} from 'graphql-guru-${database}';
 
-        export const databases = {
-          ${database}
-        };`);
+          export const databases = {
+            ${database}
+          };`);
+        }
       })
       .catch(error => {
         throw new Error(error);

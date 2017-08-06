@@ -56,7 +56,9 @@ function createResolver() {
 
     _fs2.default.writeFileAsync(file, resolverStr, options).then(function () {
       process.stdout.write(_chalk2.default.yellow('Created ' + moduleFile + '\n'));
-      process.stdout.write('\n        Run npm install graphql-guru-' + database + ' to instal  ' + database + ' client.\n\n        In server/core/database/index-database.js\n\n        import * as ' + database + ' from \'graphql-guru-' + database + '\';\n\n        export const databases = {\n          ' + database + '\n        };');
+      if (database) {
+        process.stdout.write('\n          Run npm install graphql-guru-' + database + ' to instal  ' + database + ' client.\n\n          In server/core/database/index-database.js\n\n          import * as ' + database + ' from \'graphql-guru-' + database + '\';\n\n          export const databases = {\n            ' + database + '\n          };');
+      }
     }).catch(function (error) {
       throw new Error(error);
     });
