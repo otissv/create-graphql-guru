@@ -55,7 +55,7 @@ export function schema ({ methods, moduleName }) {
     .map(
       method =>
         `# Add description
-${moduleName}${capitalize(method)}(): ${capitalize(moduleName)}
+${moduleName}${capitalize(method)}: ${capitalize(moduleName)}
 
 `
     )
