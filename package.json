@@ -1,6 +1,6 @@
 {
   "name": "create-graphql-guru",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Command line scaffolding and generator for Graphql Guru",
   "main": "dist/guru.js",
   "bin": {
@@ -31,6 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "chalk": "^2.0.1",
     "commander": "^2.9.0",
     "shelljs": "^0.7.8",
     "to-camel-case": "^1.0.0",
