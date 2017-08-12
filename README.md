@@ -1,6 +1,25 @@
 # Create GraphQL Guru
  Easily Scaffold and generate graphql servers  
 
+## Features
+- Scaffolding a full server
+- Dynamic imports
+- Structureless modules
+- Multiple pluggable database clients
+- Resolver caching
+- Schema and query validation
+- IDE and admin tools
+- Do just enough and step out the way
+
+## Databases
+While any database can be used with GraphQL Guru, the following perbuilt resolvers have been created for convenience:
+
+- [graphql-guru-mongodb](https://github.com/otissv/graphql-guru-mongodb)
+- [graphql-guru-sequelize](https://github.com/otissv/graphql-guru-sequelize) - PostgreSQL, MySQL, SQLite and MSSQL 
+- [graphql-guru-redis](https://github.com/otissv/graphql-guru-redis)
+- [graphql-guru-rethinkdb](https://github.com/otissv/graphql-guru-rethinkdb)
+- [graphql-guru-jsondb](https://github.com/otissv/graphql-guru-jsondb)
+
 ## Quick overview  
 ```npm install -g create-graphql-guru-sever
 
@@ -75,8 +94,6 @@ Once the installation is done, you can run some commands inside the project fold
 
 `npm run dev` or `yarn run dev`
 
-
-
 ## Generating files
 
 
@@ -148,5 +165,3 @@ Options:
   -p, --path             Path to where module will be created, relative to root.
   -h, --help             output usage information
 ```
-
-
